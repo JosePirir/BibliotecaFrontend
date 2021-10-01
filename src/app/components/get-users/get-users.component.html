@@ -5,6 +5,7 @@
     <div class="card myWidth text-white bg-secondary"  class="card" style="width: 18rem;" *ngFor="let users of users">
         <div class="card-body">
             <img *ngIf="users.image" src="{{uri+'getImage/'+ users.image}}" alt="Imagen de perfil">
+            <img *ngIf="users.image == null" src="../../../assets/user.png"  alt="imagen de perfil defecto">
             <h5 id="white" class="card-title">ID: {{users.identifier}}</h5>
             <h5 id="white" class="card-title">{{users.name}} {{users.lastname}}</h5><hr>
             <h5 id="white" class="card-title">Username: {{users.username}}</h5><hr>
