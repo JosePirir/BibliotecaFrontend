@@ -1,0 +1,25 @@
+<html>
+    <body>
+    <div position-relative text-center>
+    <br>
+    <div class="text-center position-absolute top-10 start-50 translate-middle-x">
+        <div class="cuadro">
+    <form #login="ngForm" (ngSubmit)="onSubmit()">
+        <br>
+        <h1> Inicia sesión</h1>
+        <br>
+        <input [(ngModel)]="user.username" name="username" type="text" placeholder="Ingrese su username">
+        <br>
+        <br>
+        <input [(ngModel)]="user.password" name="password" type="password" placeholder="Ingrese su contraseña">
+        <br>
+        <br>
+        <button type="submit"  id="botonesP" class="btn btn-success">Iniciar sesión</button>
+        <br>
+        <br>
+    </form>
+    </div>
+    </div>
+</div>
+</body>
+</html>

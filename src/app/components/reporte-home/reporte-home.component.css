@@ -1,0 +1,18 @@
+body{
+    background: linear-gradient(45deg, #ffcc5c 25%, #3c3c3c  25% 50%, #ff6f69 50% 75%, #96ceb4 75%);
+    min-height: 100vh
+}
+
+#cuadro{
+    margin: 0 auto;
+    background-color: rgba(0,0,0,0.5);
+    width: 50%;
+}
+
+button{
+    width: 40%;
+}
+
+#titulo{
+    color: #FFF;
+}

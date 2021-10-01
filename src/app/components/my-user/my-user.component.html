@@ -1,0 +1,51 @@
+<html>
+  <body>
+    <br>
+<div id="cuadro">  
+  <div class="text-center">
+    <br>
+<img *ngIf="user.image" src="{{uri+'getImage/'+ user.image}}" alt="Imagen de perfil">
+<img *ngIf="user.image == null" src="../../../assets/user.png" alt="Imagen de perfil">
+<br>
+<br>
+<h1 class="texto1">Nombre: </h1>
+    <h2 class="texto3"> {{user.name}}</h2><br>
+<h1 class="texto1">Apellido: </h1>
+    <h2 class="texto3"> {{user.lastname}}</h2><br>
+<h1 class="texto1">Username: </h1>
+    <h2 class="texto3"> {{user.username}}</h2><br>
+<h1 class="texto4">E-mail: </h1>
+    <h2 class="texto3"> {{user.email}}</h2><br><br>
+      <button routerLink="/reservaciones" class="btn btn-info" id="botonesP">Reservaciones</button>
+      <br>
+      <button routerLink="/historial" class="btn btn-warning" id="botonesP">Historial</button>
+      <br>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" id="botonesP" data-bs-target="#myModal">Subir imagen</button>
+        <br>
+        <br>
+</div>
+<br>
+<br>
+</div>
+
+<div class="modal fade" id="myModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="myModalLabel">Actualiza tu imagen de perfil</h3>
+        </div>
+        <div class="modal-body">
+          <form #formUpload="ngForm">
+            <label for="inputImage"></label>
+            <input type="file" name="image" id="inputImage" (change)="fileChange($event)" required>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" data-bs-dismiss="modal" class="btn btn-primary" (click)="uploadImage()">Upload</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+body{
+    background: linear-gradient(45deg, #ffcc5c 25%, #3c3c3c  25% 50%, #ff6f69 50% 75%, #96ceb4 75%);
+    min-height: 100vh
+}
+
+h1, h2{
+    color: #fff;
+}
+
+img {
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+}
+
+#botonesP{
+    width: 80%;
+}
+
+#cuadro{
+    margin: 0 auto;
+    background-color: rgba(0,0,0,0.5);
+    width: 25em;
+}
+

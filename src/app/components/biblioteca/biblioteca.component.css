@@ -1,0 +1,38 @@
+body{
+    background: linear-gradient(45deg, #ffcc5c 25%, #3c3c3c  25% 50%, #ff6f69 50% 75%, #96ceb4 75%);
+    min-height: 100vh;
+    color: #fff;
+}
+
+#carruouserl{
+    
+    height: 450px;
+}
+
+#carouselExampleIndicators{
+    margin: 0 auto;
+    width: 45%;
+}
+
+.text-left{
+    background-color: rgba(0,0,0,0.5);
+    width: 40%;
+    margin-right: auto;
+    margin-left: 10%;
+}
+
+p{
+    font-size: larger;
+}
+
+#boton{
+    width: 20%;
+    height: 45px;
+}
+
+.text-right{
+    background-color: rgba(0,0,0,0.5);
+    width: 40%;
+    margin-right: 10%;
+    margin-left: auto;
+}

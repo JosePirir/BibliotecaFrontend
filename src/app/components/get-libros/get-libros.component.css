@@ -1,0 +1,40 @@
+body{
+    background: linear-gradient(45deg, #ffcc5c 25%, #3c3c3c  25% 50%, #ff6f69 50% 75%, #96ceb4 75%);
+    min-height: 100vh
+}
+
+.card{
+    display: inline-block;
+    margin-left: 7%;
+    margin-top: 20px;
+    background-color: rgba(0,0,0,0.5);
+    text-align: center;
+}
+
+#white{
+    color: #FFF;
+}
+
+img{
+    width: 125px;
+    height: 200px;
+}
+
+#buscador{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#buttonCard{
+    width: 80%;
+}
+
+#titulo{
+    text-align: center;
+}
+
+#buscador{
+    background-color: rgba(0,0,0,0.5);
+    color: #fff;
+}

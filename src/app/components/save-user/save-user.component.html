@@ -1,0 +1,22 @@
+<html>
+    <body>    
+    <br>
+    <form class="text-center" #register="ngForm" (ngSubmit)="onSubmit(register)">
+        <div id="cuadro">
+            <br>
+        <h1>Agregar usuario</h1><br>
+        <input [(ngModel)]="user.identifier" name="identifier" type="text" placeholder="Ingrese No. de identificación"><br>
+        <input [(ngModel)]="user.name" name="name" type="text" placeholder="Ingrese Nombres"><br>
+        <input [(ngModel)]="user.lastname" name="lastname" type="text" placeholder="Ingrese Apellidos"><br>
+        <input [(ngModel)]="user.username" name="username" type="text" placeholder="Ingrese Username"><br>
+        <input [(ngModel)]="user.email" name="email" type="text" placeholder="Ingrese email"><br>
+        <input [(ngModel)]="user.password" name="password" type="password" placeholder="Ingrese contraseña"><br>
+        <select [(ngModel)]="user.role" name="role" placeholder="Ingrese role">
+            <option *ngFor = "let option of optionsRol" [value]="option">{{option}}</option>
+        </select><br><br>
+        <button type="submit" class="btn btn-primary">Agregar Usuario</button>
+        <br><br>
+    </div>
+    </form>
+    </body>
+</html>

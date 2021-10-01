@@ -1,0 +1,113 @@
+<body>
+<h1 id="titulo">Libros</h1>
+<div id="cards">
+  <input id="buscador" [(ngModel)]="search" type="search" name="search" class="form-control me-2" placeholder="search" aria-label="search">
+    <div class="card myWidth text-white bg-secondary" class="card" style="width: 18rem;"  *ngFor="let libros of libros | search:search">
+        <div class="card-body text-center">
+          <h1 *ngIf="libros==null" id="titulo">No se encontraron resultados</h1>
+            <img *ngIf="libros.image == null" src="../../../assets/libro.png" alt ="imagen de libro por defecto">
+            <img *ngIf="libros.image" src="{{uri+'getImageLibro/'+ libros.image}}" alt="Imagen de libro"><hr>
+            
+            <h5 id="white" class="card-title">Titulo: {{libros.titulo}}</h5><hr>
+            <h5 id="white" class="card-title">Autor: {{libros.autor}}</h5><hr>
+            <h5 id="white" class="card-title">Descripcion: {{libros.descripcion}}</h5><hr>
+            <h5 id="white" class="card-title">Copias: {{libros.copias}}</h5><hr>
+            <h5 id="white" class="card-title">Disponibles: {{libros.disponibles}}</h5><hr>
+            <h5 id="white" class="card-title">Temas: {{libros.temas}}</h5><hr>
+            <h5 id="white" class="card-title">Tipo: {{libros.tipo}}</h5><hr>
+            <div class="boton">
+            <button class="btn btn-success" id="buttonCard"(click)="obtenerData(libros)" data-bs-toggle="modal" data-bs-target="#reservar">Reservar</button>
+            <button class="btn btn-warning" id="buttonCard" *ngIf="user.role == 'admin' || user.role == 'bibliotecario'" (click)="obtenerData(libros)" data-bs-toggle="modal" data-bs-target="#editar">Editar</button>
+            <button class="btn btn-primary" id="buttonCard" *ngIf="user.role == 'admin' || user.role == 'bibliotecario'" (click)="obtenerData(libros)" data-bs-toggle="modal" data-bs-target="#myModal">Actualizar imagen</button>
+            <button class="btn btn-danger" id="buttonCard" *ngIf="user.role == 'admin' || user.role == 'bibliotecario'" (click)="obtenerData(libros)" data-bs-toggle="modal" data-bs-target="#eliminar">Eliminar</button>
+          </div>
+        </div>
+    </div>
+</div>
+</body>
+
+
+<div class="modal fade" id="reservar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-body">
+            <h3>¿Seguro que quiere reservar?</h3>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="borrarData()">Close</button>
+          <button type="button" data-bs-dismiss="modal" class="btn btn-primary" (click)="reservarLibros()">Sí</button>
+        </div>
+      </div>
+    </div>
+  </div>  
+
+  <div class="modal fade" id="myModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="myModalLabel">Actualizar Imagen</h3>
+        </div>
+        <div class="modal-body">
+          <form #formUpload="ngForm">
+            <label for="inputImage"></label>
+            <input type="file" name="image" id="inputImage" (change)="fileChange($event)" required>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" data-bs-dismiss="modal" class="btn btn-primary" (click)="uploadImage()">Upload</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="eliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-body">
+          <h3>¿Seguro que quiere eliminar el libro? (Esta acción es irreversible)</h3>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="borrarData()">Close</button>
+          <button type="button" data-bs-dismiss="modal" class="btn btn-danger" (click)="eliminarLibro()">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>  
+
+  <div class="modal fade" id="editar" tabindex="-1" aria-labelledby="editarLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="myModalLabel">Editar Bibliografia</h3>
+        </div>
+        <div class="modal-body">
+            <label class="inputAutor">Autor</label>            
+                <input [(ngModel)]="libro.autor" name="autor" #autor="ngModel" class="form-control" id="inputAutor" type="text" placeholder="ID">            
+            <label class="inputTitulo">Titulo</label>            
+                <input [(ngModel)]="libro.titulo" name="titulo" #titulo="ngModel" class="form-control" id="inputTitulo" type="text" placeholder="Tu nombre">  
+            <label class="inputDescripcion">Descripcion</label>      
+                <input [(ngModel)]="libro.descripcion" name="descripcion" #descripcion="ngModel" class="form-control" id="inputDescripcion" type="text" placeholder="Tu apellido">           
+            <label class="inputCopias">Copias</label>
+                <input [(ngModel)]="libro.copias" name="copias" #copias="ngModel" class="form-control" id="inputCopias" type="number" placeholder="Tu username">
+            <label for="inputDisponibles">Disponibles</label>
+                <input [(ngModel)]="libro.disponibles" name="disponibles" #disponibles="ngModel" class="form-control" id="inputDisponibles" type="number" placeholder="Tu correo">            
+            <label for="inputTemas">Temas</label>
+                <input [(ngModel)]="libro.temas" name="temas" #temas="ngModel" class="form-control" id="inputTemas" type="text" placeholder="Tu correo">            
+            <label for="inputPalabrasClave">Palabras Clave</label>
+                <input [(ngModel)]="libro.palabrasClave" name="palabrasClave" #palabrasClave="ngModel" class="form-control" id="inputPalabrasClave" type="text" placeholder="Tu correo">
+                <label for="inputTipo">Tipo</label>
+                <br>
+            <select [(ngModel)]="libro.tipo" name="tipo" placeholder="Ingrese tipo">
+                  <option *ngFor="let option of optionsRol" [value]="option">{{option}}</option>
+            </select>
+            <br>
+            <br>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="borrarData()">Cancelar</button>
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="updateLibro()" >Guardar cambios</button>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>

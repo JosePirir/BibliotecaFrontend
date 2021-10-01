@@ -1,0 +1,20 @@
+<body>
+<h1 id="titulo">Revistas más buscadas</h1>
+
+<h1 id="titulo" *ngIf="revistaBuscadaFind == 0">No se encontraron resultados</h1>
+
+  <table class="card-body">
+    <tr>
+      <td id="tituloTabla">Nombre</td>
+      <td id="tituloTabla">Autor</td>
+      <td id="tituloTabla">Descripcion</td>
+      <td id="tituloTabla">Busquedas</td>
+    </tr>
+    <tr *ngFor="let revistaBuscadaFind of revistaBuscadaFind">
+      <td>{{revistaBuscadaFind.titulo}}</td>
+      <td>{{revistaBuscadaFind.autor}}</td>
+      <td>{{revistaBuscadaFind.descripcion}}</td>
+      <td>{{revistaBuscadaFind.busquedas}}</td>
+    </tr>
+  </table>
+</body>

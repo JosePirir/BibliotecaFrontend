@@ -1,0 +1,36 @@
+<body>
+<h1 id="titulo">Reservaciones de {{user.username}}</h1>
+<h1 *ngIf="reservaciones == 0">No se encontraron resultados</h1>
+
+<div class="card" style="width: 18rem;" *ngFor="let libro of reservaciones">
+    <div class="card-body">
+      <img *ngIf="libro.image == null" src="../../../assets/libro.png" alt="imagen de libro por defecto">
+      
+      <img *ngIf="libro.image" src="{{uri+'getImageLibro/'+ libro.image}}" alt="Imagen de libro">
+      <h5 id="white" class="card-title">Nombre: {{libro.titulo}}</h5>
+      <h5 id="white" class="card-title">Autor: {{libro.autor}}</h5>
+      <h6 id="white" class="card-text">Descripcion: {{libro.descripcion}}</h6>
+      <button class="btn btn-primary" (click)="obtenerData(libro)" data-bs-toggle="modal" data-bs-target="#pregunta">Cancelar reservación</button>
+    </div>
+</div>
+
+<div class="modal fade" id="pregunta" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Peligro</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <h1>¿Seguro que quiere cancelar la reservación?</h1>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="borrarData()">Cerrar</button>
+        <button type="button" data-bs-dismiss="modal" class="btn btn-danger" (click)="regresarLibros()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>  
+</body>

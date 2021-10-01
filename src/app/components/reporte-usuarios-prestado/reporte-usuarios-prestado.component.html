@@ -1,0 +1,17 @@
+<body>
+<h1 id="titulo">Usuarios que más han prestado</h1>
+<h1 id="titulo" *ngIf="userFind == 0">No se encontraron resultados</h1>
+
+  <table class="card-body">
+    <tr>
+      <td id="tituloTabla">ID</td>
+      <td id="tituloTabla">Username</td>
+      <td id="tituloTabla">Libros Prestados</td>
+    </tr>
+    <tr *ngFor="let userFind of userFind">
+      <td>{{userFind.identifier}}</td>
+      <td>{{userFind.username}}</td>
+      <td>{{userFind.historial.length}}</td>
+    </tr>
+  </table>
+</body>

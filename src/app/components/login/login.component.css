@@ -1,0 +1,22 @@
+.cuadro{
+    margin: 0 auto;
+    background-color: rgba(0,0,0,0.5);
+    width: 25em;
+}
+
+h1, h2{
+    color: #fff;
+}
+
+body{
+    background: linear-gradient(45deg, #ffcc5c 25%, #3c3c3c  25% 50%, #ff6f69 50% 75%, #96ceb4 75%);
+    min-height: 100vh
+}
+
+#botonesP{
+    width: 40%;
+}
+
+input{
+    width: 65%
+}

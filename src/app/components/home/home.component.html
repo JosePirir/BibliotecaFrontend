@@ -1,0 +1,89 @@
+<html>
+    <body>
+      <br>
+    <h1 class="text-center">Bienvenido a Biblioteca Digital</h1>
+    <br>
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img  id="carruouserl" src="../../../assets/carruouserl 1.jpg" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img id="carruouserl" src="../../../assets/carruouserl 2.jpg" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img id="carruouserl" src="../../../assets/carruouserl 3.jpg" class="d-block w-100" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      
+    <br>
+    <div class="text-center">
+    <h2>¿Tienes una cuenta?</h2>
+    <button id="boton" class="btn btn-success" routerLink="/login">Inicia sesión</button>
+    </div>
+    <br>
+    <div class="text-left">
+      <br>
+    <h2>Visión</h2>
+    <p>Ser líderes en la formación técnica, tecnológica y humana de la región, brindando una excelente preparación integral a jóvenes y adultos, logrando su superación personal y profesional.
+    </p>
+    <br>
+    </div>
+    <div class="text-right">
+      <br>
+    <h2>Misión</h2>
+    <p>Formar a jóvenes y adultos a
+      través de una educación integral, con énfasis en las áreas técnicas y tecnológicas, influyendo positivamente en su trabajo, su familia y la sociedad.</p>
+      <br>
+    </div>
+    <br>
+<div class="text-center">
+    <button id="boton" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#about">About</button>
+  </div>
+  <br>
+
+    <div class="modal fade" id="about" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-body">
+              <h3>Nombre</h3>
+              <h5>José Sebastian Pirir Romero</h5>
+              <h3>Carné</h3>
+              <h5>2017059</h5>
+              <h3>Curso</h3>
+              <h5>IN6AM</h5>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+  </div>  
+  
+    <script>
+      var hrs = new Date().getHours();
+  
+      if (hrs < 12){
+        document.getElementById('greet').innerHTML = 'Buenos días y bienvenido a Biblioteca Digital.';  
+      }else if (hrs >= 12 && hrs <= 17){
+        document.getElementById('greet').innerHTML = 'Buenas tardes y bienvenido a Biblioteca Digital.';  
+      }else if (hrs >= 17 && hrs <= 24){
+        document.getElementById('greet').innerHTML = 'Buenas noches y bienvenido a Biblioteca Digital.';
+      }
+    </script>
+</body>
+</html>

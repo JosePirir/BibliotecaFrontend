@@ -1,0 +1,71 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid"> 
+        <a class="navbar-brand" href="/biblioteca">
+            <img src="../../../assets/Logo.png" class="logo">
+            Biblioteca digital
+        </a>
+        <div class="collapse  navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" *ngIf="token != null || token != undefined" routerLink="/getLibros">Libros</a>
+                </li>
+                <ul *ngIf="token != null || token != undefined" class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle me-auto" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Más opciones
+                    </a>
+                    <ul  class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li class="nav-item">
+                            <a id="more" class="nav-link" data-bs-toggle="modal" data-bs-target="#about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="more" class="nav-link" *ngIf="user.role == 'admin' || user.role == 'bibliotecario' && token != null" routerLink="/saveLibro">Agregar Libros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="more" *ngIf="user.role == 'admin' && token != null" class="nav-link" routerLink="/saveUser">Agregar Usuarios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="more" class="nav-link" routerLink="/getUsers" *ngIf="user.role == 'admin'" >Ver usuarios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a  id="more" class="nav-link" *ngIf="user.role == 'admin' && token != null" routerLink="/reporteHome">Reportes</a>
+                        </li>
+                    </ul>
+                </ul>
+                
+            </ul>
+                <ul class="navbar-nav ms-auto" *ngIf="token != null || token != undefined">
+                    <ul class="nav-item">
+                        <a class="nav-link ms-auto" (click)="logOut()" *ngIf="token != null || token != undefined" >Cerrar sesión</a>
+                    </ul>
+                    <li class="nav-item ">
+                        <a class="nav-link ms-auto"  routerLink="/myUser">{{user.username}}</a>
+                    </li>
+                    <li class="nav-item ms-auto">
+                        <a class="nav-link mr-auto" routerLink="/myUser">
+                            <img *ngIf="user.image" id="imgUser" src="{{uri+'getImage/'+user.image}}" class="imagenUser" alt="imagen de usuario">
+                            <img *ngIf="user.image == null" id="imgUser" src="../../../assets/user.png" class="imagenUser" alt="imagen de usuario">
+                        </a>
+                    </li>
+                </ul>
+            
+        </div>
+        </div>
+</nav>
+
+<div class="modal fade" id="about" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-body">
+            <h3>Nombre</h3>
+            <h5>José Sebastian Pirir Romero</h5>
+            <h3>Carné</h3>
+            <h5>2017059</h5>
+            <h3>Curso</h3>
+            <h5>IN6AM</h5>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+</div>  

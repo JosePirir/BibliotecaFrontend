@@ -1,0 +1,20 @@
+<body>
+<h1 id="titulo">Revistas más prestadas</h1>
+
+<h1 id="titulo" *ngIf="revistaPrestadaFind == 0">No se encontraron resultados</h1>
+
+<table class="card-body">
+  <tr>
+    <td id="tituloTabla">Nombre</td>
+    <td id="tituloTabla">Autor</td>
+    <td id="tituloTabla">Descripcion</td>
+    <td id="tituloTabla">Prestamos</td>
+  </tr>
+  <tr *ngFor="let revistaPrestadaFind of revistaPrestadaFind">
+    <td>{{revistaPrestadaFind.titulo}}</td>
+    <td>{{revistaPrestadaFind.autor}}</td>
+    <td>{{revistaPrestadaFind.descripcion}}</td>
+    <td>{{revistaPrestadaFind.reservas}}</td>
+  </tr>
+</table>
+</body>

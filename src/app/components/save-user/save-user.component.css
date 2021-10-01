@@ -1,0 +1,21 @@
+body{
+    background: linear-gradient(45deg, #ffcc5c 25%, #3c3c3c  25% 50%, #ff6f69 50% 75%, #96ceb4 75%);
+    min-height: 100vh;
+}
+
+select, input{
+    width: 65%;
+}
+
+#cuadro{
+    margin: 0 auto; /*centrar*/
+    justify-content: center;
+    align-items: center;
+    margin-top: 0%;
+    background-color: rgba(0,0,0,0.5);
+    width: 40%;
+}
+
+h1{
+    color: #fff;
+}

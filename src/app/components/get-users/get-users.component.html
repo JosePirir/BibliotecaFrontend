@@ -1,0 +1,62 @@
+<body>
+  <div class="intro">
+<h1 id="titulo">Usuarios</h1>
+<div id="cards">
+    <div class="card myWidth text-white bg-secondary"  class="card" style="width: 18rem;" *ngFor="let users of users">
+        <div class="card-body">
+            <img *ngIf="users.image" src="{{uri+'getImage/'+ users.image}}" alt="Imagen de perfil">
+            <h5 id="white" class="card-title">ID: {{users.identifier}}</h5>
+            <h5 id="white" class="card-title">{{users.name}} {{users.lastname}}</h5><hr>
+            <h5 id="white" class="card-title">Username: {{users.username}}</h5><hr>
+            <h5 id="white" class="card-title">Role: {{users.role}}</h5><hr>
+            <h5 id="white"class="card-title">Email: {{users.email}}</h5><hr>
+            <button  class="btn btn-success" id="buttonCard" (click)="obtenerData(users)" data-bs-toggle="modal" data-bs-target="#editar">Editar usuario</button>  
+            <button  class="btn btn-danger" id="buttonCard" data-bs-toggle="modal" data-bs-target="#borrar" (click)="obtenerData(users)">Eliminar usuario</button>
+        </div>
+      </div>
+    </div>
+</div>
+<!-- MODAL PARA ELIMINAR CUENTA -->
+<div class="modal fade" id="borrar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-body">
+            <h1>¿Seguro que quiere eliminar al usuario? (Esta acción es irreversible)</h1>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="borrarData()">Close</button>
+          <button type="button" data-bs-dismiss="modal" class="btn btn-danger" (click)="eliminarUser()">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>  
+
+  <!--MODAL de  editar user-->
+  
+  <div class="modal fade" id="editar" tabindex="-1" aria-labelledby="editarLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Editar usuario</h3>
+        </div>
+        <div class="modal-body">
+            <label class="inputIdentifier">Identificador</label>            
+                <input [(ngModel)]="user.identifier" name="identifier" #identifier="ngModel" class="form-control" id="inputIdentifier" type="text" placeholder="ID">            
+            <label class="inputName">Nombre</label>            
+                <input [(ngModel)]="user.name" name="name" #name="ngModel" class="form-control" id="inputName" type="text" placeholder="Tu nombre">  
+            <label class="inputLastName">Apellido</label>      
+                <input [(ngModel)]="user.lastname" name="lastname" #lastname="ngModel" class="form-control" id="inputLastName" type="text" placeholder="Tu apellido">           
+            <label class="inputUsername">Username</label>
+                <input [(ngModel)]="user.username" name="username" #username="ngModel" class="form-control" id="inputUserName" type="text" placeholder="Tu username">
+            <label for="inputEmail">Correo</label>
+                <input [(ngModel)]="user.email" name="email" #email="ngModel" class="form-control" id="inputEmail" type="email" placeholder="Tu correo">
+                <br>
+            <div class="modal-footer">        
+              <button type="button" class="btn btn-secondary col-lg-3 mx-2" data-bs-dismiss="modal" (click)="borrarData()">Cancelar</button>
+              <button type="button" class="btn btn-primary col-lg-3 mx-2" data-bs-dismiss="modal" (click)="updateUser()" >Guardar cambios</button>
+            </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
